@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.test.demo.input.Farmanet;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,6 +20,7 @@ public class FarmanetClient {
         this.restTemplate = new RestTemplate();
     }
 
+    @Cacheable()
     public List<Farmanet> getFarmanet() throws Exception {    
         
         String response = restTemplate.getForObject(URL, String.class);
